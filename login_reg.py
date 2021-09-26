@@ -3,7 +3,7 @@
 from tkinter import *
 import os
 from tkinter import messagebox
-from PHARMACYMNGMNT import login_page
+from management_sys import login_page
 
 
 
