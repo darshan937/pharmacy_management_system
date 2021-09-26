@@ -1,4 +1,4 @@
-# import
+# imports
 
 from tkinter import *
 import os
