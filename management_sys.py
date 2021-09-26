@@ -319,10 +319,10 @@ def login_page():
 
     root=Toplevel()
     root.title("Pharmacy Management System")
-    '''
-    icon=PhotoImage(file='C:/Users/dijac/Downloads/pill.png')
-    root.iconphoto(False,icon)
-    '''
+
+    photo = PhotoImage("pill.png")
+    root.iconphoto(False, photo)
+
     root.geometry("1280x680")
 
     #top title
@@ -330,7 +330,7 @@ def login_page():
     title.pack(side=TOP,fill=X,padx=10,pady=10)
 
     #logo image
-    img1= Image.open("C:/Users/dijac/Downloads/logo.png")
+    img1= Image.open("logo.png")
     img1= img1.resize((80,80),Image.ANTIALIAS)
     photoimg1=ImageTk.PhotoImage(img1)
     btn=Button(root,image=photoimg1,borderwidth=0)

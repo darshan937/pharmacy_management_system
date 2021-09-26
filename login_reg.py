@@ -1,4 +1,4 @@
-# module imports
+# module import
 
 from tkinter import *
 import os
