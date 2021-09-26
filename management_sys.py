@@ -1,13 +1,26 @@
 # Firstly import Tkinter Module
 from tkinter import *
 from tkinter import ttk
-from PIL import ImageTk
+from PIL import Image,ImageTk
 
 root = Tk()
 root.title("Pharmacy Management System")
 p1 = PhotoImage(file ='pill.png')
 root.iconphoto(False, p1)
 root.geometry("1280x680")
+
+
+#dataframe
+DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
+DataFrame.place(x=0, y=110, width=1280, height=420)
+
+ #title
+title=Label(root,text="Pharmacy Management System",bg="black",fg="red",font=("Bradley Hand ITC",50,"bold"))
+title.pack(side=TOP,fill=X,padx=10,pady=10)
+
+ #dataframe left
+DataFrameLeft=LabelFrame(DataFrame,bd=10,bg="lightblue",relief=RIDGE,padx=20,text="Medicine Information",fg="black",font=("arial",16,"bold"))
+DataFrameLeft.place(x=0,y=5,width=900,height=355)
 
 # images in left dataframe
 img2 = Image.open("tab.png")
@@ -23,29 +36,17 @@ btn = Button(root, image=photoimg3, borderwidth=0)
 btn.place(x=470, y=270)
 
 # images in right dataframe
-img4 = Image.open("C:/Users/dijac/Downloads/abc.png")
+img4 = Image.open("abc.png")
 img4 = img4.resize((70, 120), Image.ANTIALIAS)
 photoimg4 = ImageTk.PhotoImage(img4)
 btn = Button(root, image=photoimg4, borderwidth=0)
 btn.place(x=1140, y=200)
 
-img5 = Image.open("C:/Users/dijac/Downloads/123.png")
+img5 = Image.open("123.png")
 img5 = img5.resize((70, 80), Image.ANTIALIAS)
 photoimg5 = ImageTk.PhotoImage(img5)
 btn = Button(root, image=photoimg5, borderwidth=0)
 btn.place(x=1140, y=387)
-
- #dataframe
-DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
-DataFrame.place(x=0, y=110, width=1280, height=420)
-
- #title
-title=Label(root,text="Pharmacy Management System",bg="black",fg="red",font=("Bradley Hand ITC",50,"bold"))
-title.pack(side=TOP,fill=X,padx=10,pady=10)
-
- #dataframe left
-DataFrameLeft=LabelFrame(DataFrame,bd=10,bg="lightblue",relief=RIDGE,padx=20,text="Medicine Information",fg="black",font=("arial",16,"bold"))
-DataFrameLeft.place(x=0,y=5,width=900,height=355)
 
  #textfield and entry for dataframe in left
  #refrence no
