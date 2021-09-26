@@ -475,6 +475,5 @@ sc_y.pack(side=RIGHT, fill=Y)
 
 sc_x.pack(side=BOTTOM, fill=X)
 sc_y.pack(side=RIGHT, fill=Y)
-
 mainloop()
 
