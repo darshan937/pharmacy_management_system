@@ -111,3 +111,16 @@ def password_not_recognised():
 def user_not_found():
     global user_not_found_screen
     messagebox.showinfo("Not found","User not found")
+
+# clearing popup
+
+def delete_login_success():
+    login_success_screen.destroy()
+
+
+def delete_password_not_recognised():
+    password_not_recognised_screen.destroy()
+
+
+def delete_user_not_found():
+    user_not_found_screen.destroy()
