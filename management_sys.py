@@ -224,6 +224,101 @@ def edit():
         # Destroying all the data and closing window
         editor.destroy()
 
+    # Create text boxes
+    ref_no_editor = Entry(editor, width=30)
+    ref_no_editor.grid(row=0, column=1, padx=20, pady=(10, 0))
+
+    Company_editor = Entry(editor, width=30)
+    Company_editor.grid(row=1, column=1, padx=20, pady=(10, 0))
+
+    med_type_editor = Entry(editor, width=30)
+    med_type_editor.grid(row=2, column=1, padx=20, pady=(10, 0))
+
+    med_name_editor = Entry(editor, width=30)
+    med_name_editor.grid(row=3, column=1, padx=20, pady=(10, 0))
+
+    lot_no_editor = Entry(editor, width=30)
+    lot_no_editor.grid(row=4, column=1, padx=20, pady=(10, 0))
+
+    issue_editor = Entry(editor, width=30)
+    issue_editor.grid(row=5, column=1, padx=20, pady=(10, 0))
+
+    expiry_editor = Entry(editor, width=30)
+    expiry_editor.grid(row=6, column=1, padx=20, pady=(10, 0))
+
+    dosage_editor = Entry(editor, width=30)
+    dosage_editor.grid(row=7, column=1, padx=20, pady=(10, 0))
+
+    tab_price_editor = Entry(editor, width=30)
+    tab_price_editor.grid(row=8, column=1, padx=20, pady=(10, 0))
+
+    precs_editor = Entry(editor, width=30)
+    precs_editor.grid(row=9, column=1, padx=20, pady=(10, 0))
+
+    uses_editor = Entry(editor, width=30)
+    uses_editor.grid(row=10, column=1, padx=20, pady=(10, 0))
+
+    side_effects_editor = Entry(editor, width=30)
+    side_effects_editor.grid(row=11, column=1, padx=20, pady=(10, 0))
+
+    # Create textbox labels
+    ref_no_label = Label(editor, text="Refrence no")
+    ref_no_label.grid(row=0, column=0, pady=(10, 0))
+
+    Company_label = Label(editor, text="Company/Customer Name")
+    Company_label.grid(row=1, column=0)
+
+    med_type_label = Label(editor, text="Medicine Type")
+    med_type_label.grid(row=2, column=0)
+
+    med_name_label = Label(editor, text="Medicine Type")
+    med_name_label.grid(row=3, column=0)
+
+    lot_no_label = Label(editor, text="Lot no.")
+    lot_no_label.grid(row=4, column=0)
+
+    issue_label = Label(editor, text="Issue Date.")
+    issue_label.grid(row=5, column=0)
+
+    expiry_label = Label(editor, text="Expiry Date")
+    expiry_label.grid(row=6, column=0)
+
+    dosage_label = Label(editor, text="Dosage")
+    dosage_label.grid(row=7, column=0)
+
+    tab_price_label = Label(editor, text="Tablets price")
+    tab_price_label.grid(row=8, column=0)
+
+    precs_label = Label(editor, text="Precs & Warning")
+    precs_label.grid(row=9, column=0)
+
+    uses_label = Label(editor, text=" Uses")
+    uses_label.grid(row=10, column=0)
+
+    side_effects_label = Label(editor, text=" Side Effects")
+    side_effects_label.grid(row=11, column=0)
+
+    # loop through the results
+    for record in records:
+        ref_no_editor.insert(0, record[0])
+        Company_editor.insert(0, record[1])
+        med_type_editor.insert(0, record[2])
+        med_name_editor.insert(0, record[3])
+        lot_no_editor.insert(0, record[4])
+        issue_editor.insert(0, record[5])
+        expiry_editor.insert(0, record[6])
+        dosage_editor.insert(0, record[7])
+        tab_price_editor.insert(0, record[8])
+        precs_editor.insert(0, record[9])
+        uses_editor.insert(0, record[10])
+        side_effects_editor.insert(0, record[11])
+
+    # Create a update button
+    edit_btn = Button(editor, text=" SAVE ", command=update)
+    edit_btn.grid(row=12, column=0, columnspan=2, pady=10, padx=10, ipadx=125)
+
+
+
 #dataframe
 DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
 DataFrame.place(x=0, y=110, width=1280, height=420)
