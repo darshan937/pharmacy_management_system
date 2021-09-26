@@ -1,12 +1,39 @@
 # Firstly import Tkinter Module
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk
 
 root = Tk()
 root.title("Pharmacy Management System")
 p1 = PhotoImage(file ='pill.png')
 root.iconphoto(False, p1)
 root.geometry("1280x680")
+
+# images in left dataframe
+img2 = Image.open("tab.png")
+img2 = img2.resize((100, 80), Image.ANTIALIAS)
+photoimg2 = ImageTk.PhotoImage(img2)
+btn = Button(root, image=photoimg2, borderwidth=0)
+btn.place(x=800, y=177)
+
+img3 = Image.open("doc.png")
+img3 = img3.resize((430, 200), Image.ANTIALIAS)
+photoimg3 = ImageTk.PhotoImage(img3)
+btn = Button(root, image=photoimg3, borderwidth=0)
+btn.place(x=470, y=270)
+
+# images in right dataframe
+img4 = Image.open("C:/Users/dijac/Downloads/abc.png")
+img4 = img4.resize((70, 120), Image.ANTIALIAS)
+photoimg4 = ImageTk.PhotoImage(img4)
+btn = Button(root, image=photoimg4, borderwidth=0)
+btn.place(x=1140, y=200)
+
+img5 = Image.open("C:/Users/dijac/Downloads/123.png")
+img5 = img5.resize((70, 80), Image.ANTIALIAS)
+photoimg5 = ImageTk.PhotoImage(img5)
+btn = Button(root, image=photoimg5, borderwidth=0)
+btn.place(x=1140, y=387)
 
  #dataframe
 DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
@@ -95,13 +122,13 @@ Sideeffects.grid(row=2,column=3, sticky=W)
 Sideeffects_entry = Entry(DataFrameLeft,font=("arial",10,"bold"),bg="white",bd=2,relief=RIDGE,width=29)
 Sideeffects_entry.grid(row=2,column=4)
 
-# dataframe Right
+   # dataframe Right
 DataFrameRight = LabelFrame(DataFrame, bd=10, bg="lightblue", relief=RIDGE, padx=20, text="Medicine Edit Department",
                             fg="darkgreen", font=("arial", 16, "bold"))
 DataFrameRight.place(x=910, y=5, width=300, height=355)
 
-# edit buttons and refrence id entry on dataframe Right
-# buttons
+    # edit buttons and refrence id entry on dataframe Right
+    # buttons
 btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white",
                     bg="darkgreen", padx=2 )
 btnAddData.grid(row=1, column=0, padx=3, pady=3)
@@ -118,7 +145,7 @@ btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=
                  )
 btnExit.grid(row=5, column=0, padx=3, pady=3)
 
-# search entry
+  # search entry
 txtsearch = Entry(DataFrameRight, bd=3, relief=RIDGE, width=14, font=("arial", 12, "bold"))
 txtsearch.grid(row=7, column=0, padx=3, pady=3)
 
