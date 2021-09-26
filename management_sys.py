@@ -347,26 +347,26 @@ def login_page():
     DataFrameLeft.place(x=0,y=5,width=900,height=355)
 
     # images in left dataframe
-    img2= Image.open("C:/Users/dijac/Downloads/tab.png")
+    img2= Image.open("tab.png")
     img2= img2.resize((100,80),Image.ANTIALIAS)
     photoimg2=ImageTk.PhotoImage(img2)
     btn=Button(root,image=photoimg2,borderwidth=0)
     btn.place(x=800,y=177)
 
-    img3= Image.open("C:/Users/dijac/Downloads/doc.png")
+    img3= Image.open("doc.png")
     img3= img3.resize((430,200),Image.ANTIALIAS)
     photoimg3=ImageTk.PhotoImage(img3)
     btn=Button(root,image=photoimg3,borderwidth=0)
     btn.place(x=470,y=270)
 
     # images in right dataframe
-    img4= Image.open("C:/Users/dijac/Downloads/abc.png")
+    img4= Image.open("abc.png")
     img4= img4.resize((70,120),Image.ANTIALIAS)
     photoimg4=ImageTk.PhotoImage(img4)
     btn=Button(root,image=photoimg4,borderwidth=0)
     btn.place(x=1140,y=200)
 
-    img5= Image.open("C:/Users/dijac/Downloads/123.png")
+    img5= Image.open("123.png")
     img5= img5.resize((70,80),Image.ANTIALIAS)
     photoimg5=ImageTk.PhotoImage(img5)
     btn=Button(root,image=photoimg5,borderwidth=0)
