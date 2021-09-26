@@ -108,6 +108,121 @@ def query():
     conn.commit()
     conn.close()
 
+def delete():
+    # Create a databases or connect to one
+    conn = sqlite3.connect('address_book1.db')
+
+    # Create cursor
+    c = conn.cursor()
+
+    # Delete a record
+    c.execute("DELETE from addresses WHERE oid = " + txtsearch.get())
+    print("deleted sucessfully")
+
+    # query of databases
+    c.execute("SELECT *, oid FROM addresses")
+
+    records = c.fetchall()
+    print(records)
+
+    # Loop through the results
+    print_record = ''
+    for record in records:
+        print_record += str(record[0]) + ' ' + str(record[1]) + ' ' + str(record[2]) + ' ' + str(record[3]) + ' ' + str(
+            record[4]) + ' ' + str(record[5]) + ' ' + str(record[6]) + ' ' + str(record[7]) + ' ' + str(
+            record[8]) + ' ' + str(record[9]) + ' ' + str(record[10]) + ' ' + str(record[11]) + ' ' + str(
+            record[12])  + "\n"
+    query_label = Label(details_frame, text=print_record)
+    query_label.place(x=0,y=0)
+
+    conn.commit()
+    conn.close()
+    messagebox.showinfo("Deleted successfully", "Data Deleted sucessfully")
+
+
+def edit():
+
+    global editor
+
+    editor = Tk()
+    editor.title('Update Data')
+    editor.geometry('600x600')
+
+    # Create a databases or connect to one
+    conn = sqlite3.connect('address_book1.db')
+
+    # Create cursor
+    c = conn.cursor()
+
+    record_id = txtsearch.get()
+
+    # query of the database
+    c.execute("SELECT * FROM addresses WHERE oid=" + record_id)
+
+    records = c.fetchall()
+
+    #Creating global variable for all text boxes
+    global ref_no_editor
+    global Company_editor
+    global med_type_editor
+    global med_name_editor
+    global lot_no_editor
+    global issue_editor
+    global expiry_editor
+    global dosage_editor
+    global tab_price_editor
+    global precs_editor
+    global uses_editor
+    global side_effects_editor
+
+
+    # Creating an update function
+    def update():
+        # Create a databases or connect to one
+        conn = sqlite3.connect('address_book1.db')
+
+        # Create cursor
+        c = conn.cursor()
+
+        record_id = txtsearch.get()
+
+        c.execute(""" UPDATE addresses SET
+                 ref_no = :ref,
+                 company_name = :company,
+                 med_type = :med_t,
+                 med_name = :med_n,
+                 lot_no = :lot,
+                 issue_date = :issue,
+                 expiry_date = :expiry,
+                 dosage = :dos,
+                 tab_price = :tab_p,
+                 precs_warning = :precs,
+                 uses = :use,
+                 side_effects = :side
+                 WHERE oid = :oid""",
+                      {'ref': ref_no_editor.get(),
+                       'company': Company_editor.get(),
+                       'med_t': med_type_editor.get(),
+                       'med_n': med_name_editor.get(),
+                       'lot': lot_no_editor.get(),
+                       'issue': issue_editor.get(),
+                       'expiry': expiry_editor.get(),
+                       'dos': dosage_editor.get(),
+                       'tab_p': tab_price_editor.get(),
+                       'precs': precs_editor.get(),
+                       'use': uses_editor.get(),
+                       'side': side_effects_editor.get(),
+                       'oid': record_id
+
+                       }
+                      )
+        conn.commit()
+        conn.close()
+
+        messagebox.showinfo("Updated sucessfully","YOUR DATA HAVE BEEN SUCCESSFULLY UPDATED")
+
+        # Destroying all the data and closing window
+        editor.destroy()
 
 #dataframe
 DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
@@ -232,10 +347,10 @@ DataFrameRight.place(x=910, y=5, width=300, height=355)
 btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2, command=submit)
 btnAddData.grid(row=1, column=0, padx=3, pady=3)
 
-btnUpdate = Button(DataFrameRight, text="Update", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2 )
+btnUpdate = Button(DataFrameRight, text="Update", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2, command=edit )
 btnUpdate.grid(row=2, column=0, padx=3, pady=3)
 
-btnDelete = Button(DataFrameRight, text="Delete", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred")
+btnDelete = Button(DataFrameRight, text="Delete", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred", command=delete)
 btnDelete.grid(row=3, column=0, padx=3, pady=3)
 
 btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred")
