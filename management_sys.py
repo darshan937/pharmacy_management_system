@@ -2,6 +2,8 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk
+from tkinter import messagebox
+import sqlite3
 
 root = Tk()
 root.title("Pharmacy Management System")
@@ -80,6 +82,31 @@ def submit():
     Sideeffects_entry.delete(0, END)
 
     messagebox.showinfo("Medicine added", "MEDICINE ADDED SUCCESSFULLY")
+
+
+def query():
+    # Create a databases or connect to one
+    conn = sqlite3.connect('address_book1.db')
+
+    # Create cursor
+    c = conn.cursor()
+
+    # query of the database
+    c.execute("SELECT *, oid FROM addresses")
+
+    records = c.fetchall()
+    print("After show button",records)
+
+    # Loop through the results
+    print_record=''
+    for record in records:
+        print_record += str(record[0]) + ' ' + str(record[1])+' '+ str(record[2])+ ' ' + str(record[3]) + ' ' + str(record[4]) + ' ' +  str(record[5]) + ' ' +  str(record[6]) + ' ' +  str(record[7]) + ' ' +  str(record[8]) + ' ' +  str(record[9]) + ' ' +  str(record[10]) + ' ' +  str(record[11]) + ' ' +  str(record[12]) + "\n"
+    print("showing data", print_record)
+    query_label = Label(details_frame, text=print_record)
+    query_label.place(x=0,y=0)
+
+    conn.commit()
+    conn.close()
 
 
 #dataframe
@@ -219,7 +246,7 @@ txtsearch = Entry(DataFrameRight, bd=3, relief=RIDGE, width=14, font=("arial", 1
 txtsearch.grid(row=7, column=0, padx=3, pady=3)
 
   #show button
-ShowAllbtn = Button(DataFrameRight, text="Show All", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen")
+ShowAllbtn = Button(DataFrameRight, text="Show All", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", command=query)
 ShowAllbtn.grid(row=9, column=0, padx=3, pady=3)
 
  # Details frame
