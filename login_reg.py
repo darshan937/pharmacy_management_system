@@ -105,3 +105,9 @@ def login_sucess():
 def password_not_recognised():
     global password_not_recognised_screen
     messagebox.showinfo("Incorrect", "Password Not Recognised")
+
+# popup for user not found
+
+def user_not_found():
+    global user_not_found_screen
+    messagebox.showinfo("Not found","User not found")
