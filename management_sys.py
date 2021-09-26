@@ -319,10 +319,10 @@ def login_page():
 
     root=Toplevel()
     root.title("Pharmacy Management System")
-
+    '''
     photo = PhotoImage("pill.png")
     root.iconphoto(False, photo)
-
+    '''
     root.geometry("1280x680")
 
     #top title
