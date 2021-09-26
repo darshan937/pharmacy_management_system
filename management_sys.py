@@ -317,6 +317,10 @@ def edit():
     edit_btn = Button(editor, text=" SAVE ", command=update)
     edit_btn.grid(row=12, column=0, columnspan=2, pady=10, padx=10, ipadx=125)
 
+def exit_fun():
+    ask = messagebox.askyesno("exit","Do you want to exit?")
+    if ask == 1 :
+        root.destroy()
 
 
 #dataframe
@@ -448,7 +452,7 @@ btnUpdate.grid(row=2, column=0, padx=3, pady=3)
 btnDelete = Button(DataFrameRight, text="Delete", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred", command=delete)
 btnDelete.grid(row=3, column=0, padx=3, pady=3)
 
-btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred")
+btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred", command=exit_fun)
 btnExit.grid(row=5, column=0, padx=3, pady=3)
 
   # search entry
