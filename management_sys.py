@@ -9,6 +9,31 @@ p1 = PhotoImage(file ='pill.png')
 root.iconphoto(False, p1)
 root.geometry("1280x680")
 
+# Databases
+# Create a databases or connect to one
+conn = sqlite3.connect('address_book1.db')
+
+# Create cursor
+c = conn.cursor()
+
+# Create table
+'''
+c.execute(""" CREATE TABLE addresses(
+        ref_no integer,
+        company_name text,
+        med_type text,
+        med_name text,
+        lot_no integer,
+        issue_date integer,
+        expiry_date integer,
+        dosage integer,
+        tab_price integer,
+        precs_warning text,
+        uses text,
+        side_effects text
+) """)
+'''
+
 
 #dataframe
 DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
@@ -130,20 +155,16 @@ DataFrameRight.place(x=910, y=5, width=300, height=355)
 
     # edit buttons and refrence id entry on dataframe Right
     # buttons
-btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white",
-                    bg="darkgreen", padx=2 )
+btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2 )
 btnAddData.grid(row=1, column=0, padx=3, pady=3)
 
-btnUpdate = Button(DataFrameRight, text="Update", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen",
-                   padx=2 )
+btnUpdate = Button(DataFrameRight, text="Update", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2 )
 btnUpdate.grid(row=2, column=0, padx=3, pady=3)
 
-btnDelete = Button(DataFrameRight, text="Delete", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred"
-                   )
+btnDelete = Button(DataFrameRight, text="Delete", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred")
 btnDelete.grid(row=3, column=0, padx=3, pady=3)
 
-btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred"
-                 )
+btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred")
 btnExit.grid(row=5, column=0, padx=3, pady=3)
 
   # search entry
