@@ -92,3 +92,11 @@ def login_verify():
 
     else:
         user_not_found()
+
+#popup for login sucess
+
+def login_sucess():
+    global login_success_screen
+    messagebox.showinfo("Login","Login Success")
+    login_page()
+
