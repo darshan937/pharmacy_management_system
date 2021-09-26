@@ -1,6 +1,6 @@
 # Firstly import Tkinter Module
 from tkinter import *
-
+from tkinter import ttk
 
 root = Tk()
 root.title("Pharmacy Management System")
@@ -95,6 +95,36 @@ Sideeffects.grid(row=2,column=3, sticky=W)
 Sideeffects_entry = Entry(DataFrameLeft,font=("arial",10,"bold"),bg="white",bd=2,relief=RIDGE,width=29)
 Sideeffects_entry.grid(row=2,column=4)
 
+# dataframe Right
+DataFrameRight = LabelFrame(DataFrame, bd=10, bg="lightblue", relief=RIDGE, padx=20, text="Medicine Edit Department",
+                            fg="darkgreen", font=("arial", 16, "bold"))
+DataFrameRight.place(x=910, y=5, width=300, height=355)
+
+# edit buttons and refrence id entry on dataframe Right
+# buttons
+btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white",
+                    bg="darkgreen", padx=2 )
+btnAddData.grid(row=1, column=0, padx=3, pady=3)
+
+btnUpdate = Button(DataFrameRight, text="Update", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen",
+                   padx=2 )
+btnUpdate.grid(row=2, column=0, padx=3, pady=3)
+
+btnDelete = Button(DataFrameRight, text="Delete", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred"
+                   )
+btnDelete.grid(row=3, column=0, padx=3, pady=3)
+
+btnExit = Button(DataFrameRight, text="Exit", font=("arial", 12, "bold"), width=14, fg="white", bg="darkred"
+                 )
+btnExit.grid(row=5, column=0, padx=3, pady=3)
+
+# search entry
+txtsearch = Entry(DataFrameRight, bd=3, relief=RIDGE, width=14, font=("arial", 12, "bold"))
+txtsearch.grid(row=7, column=0, padx=3, pady=3)
+
+ShowAllbtn = Button(DataFrameRight, text="Show All", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen"
+                    )
+ShowAllbtn.grid(row=9, column=0, padx=3, pady=3)
 
 mainloop()
 
