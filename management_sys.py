@@ -150,9 +150,22 @@ btnExit.grid(row=5, column=0, padx=3, pady=3)
 txtsearch = Entry(DataFrameRight, bd=3, relief=RIDGE, width=14, font=("arial", 12, "bold"))
 txtsearch.grid(row=7, column=0, padx=3, pady=3)
 
-ShowAllbtn = Button(DataFrameRight, text="Show All", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen"
-                    )
+  #show button
+ShowAllbtn = Button(DataFrameRight, text="Show All", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen")
 ShowAllbtn.grid(row=9, column=0, padx=3, pady=3)
+
+ # Details frame
+details_frame = Frame(root, bd=10, relief=RIDGE)
+details_frame.place(x=0, y=540, width=1279, height=300)
+
+ # details and scrollbar
+sc_x = ttk.Scrollbar(details_frame, orient=HORIZONTAL)
+sc_x.pack(side=BOTTOM, fill=X)
+sc_y = ttk.Scrollbar(details_frame, orient=VERTICAL)
+sc_y.pack(side=RIGHT, fill=Y)
+
+sc_x.pack(side=BOTTOM, fill=X)
+sc_y.pack(side=RIGHT, fill=Y)
 
 mainloop()
 
