@@ -35,6 +35,53 @@ c.execute(""" CREATE TABLE addresses(
 '''
 
 
+# Create submit button for databases
+def submit():
+    # Create a databases or connect to one
+    conn = sqlite3.connect('address_book1.db')
+
+    # Create cursor
+    c = conn.cursor()
+
+    # Insert into table
+    c.execute(
+        "INSERT INTO addresses VALUES (:ref_no, :company_name, :med_name, :med_type, :lot_no, :issue_date, :expiry_date, :dosage, :tab_price, :precs_warning, :uses, :side_effects)",
+        {
+            'ref_no': Refno_entry.get(),
+            'company_name': Company_entry.get(),
+            'med_type': MedType_combo.get(),
+            'med_name': Medname_entry.get(),
+            'lot_no': Lot_entry.get(),
+            'issue_date': Issue_entry.get(),
+            'expiry_date': Expiry_entry.get(),
+            'dosage': Dosage_entry.get(),
+            'tab_price': Tablets_entry.get(),
+            'precs_warning': Precs_entry.get(),
+            'uses': Uses_entry.get(),
+            'side_effects': Sideeffects_entry.get()
+        })
+
+    conn.commit()
+
+    conn.close()
+
+    # clear the text boxes
+    Refno_entry.delete(0, END)
+    Company_entry.delete(0, END)
+    MedType_combo.delete(0, END)
+    Medname_entry.delete(0, END)
+    Lot_entry.delete(0, END)
+    Issue_entry.delete(0, END)
+    Expiry_entry.delete(0, END)
+    Dosage_entry.delete(0, END)
+    Tablets_entry.delete(0, END)
+    Precs_entry.delete(0, END)
+    Uses_entry.delete(0, END)
+    Sideeffects_entry.delete(0, END)
+
+    messagebox.showinfo("Medicine added", "MEDICINE ADDED SUCCESSFULLY")
+
+
 #dataframe
 DataFrame = Frame(root, bd=10, bg="black", relief=RIDGE, padx=20, pady=20)
 DataFrame.place(x=0, y=110, width=1280, height=420)
@@ -155,7 +202,7 @@ DataFrameRight.place(x=910, y=5, width=300, height=355)
 
     # edit buttons and refrence id entry on dataframe Right
     # buttons
-btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2 )
+btnAddData = Button(DataFrameRight, text="Add Medicine", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2, command=submit)
 btnAddData.grid(row=1, column=0, padx=3, pady=3)
 
 btnUpdate = Button(DataFrameRight, text="Update", font=("arial", 12, "bold"), width=14, fg="white", bg="darkgreen", padx=2 )
