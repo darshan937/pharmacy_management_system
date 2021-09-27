@@ -4,14 +4,15 @@ from tkinter import *
 import os
 from tkinter import messagebox
 from management_sys import login_page
-
-
+from PIL import Image,ImageTk
+from tkinter import Tk
 
 def register():
     global register_screen
     register_screen = Toplevel(main_screen)
     register_screen.title("Register")
     register_screen.geometry("310x230")
+    register_screen.iconbitmap('pill.png')
 
     global username
     global password
@@ -20,7 +21,7 @@ def register():
     username = StringVar()
     password = StringVar()
 
-    Label(register_screen, text="Please enter details below", bg="orange",font=("Times", "15", "bold italic")).pack()
+    Label(register_screen, text="Please enter details below", bg="black",fg='white',font=("Bradley Hand ITC",20,"bold")).pack()
     Label(register_screen, text="").pack()
     username_lable = Label(register_screen, text="Username  ",font=("Times", "12", "bold"))
     username_lable.pack()
@@ -33,12 +34,17 @@ def register():
     Label(register_screen, text="").pack()
     Button(register_screen, text="Register", width=10, height=1 ,font=("Times", "12", "bold"), command=register_user).pack()
 
+
+
+
 def login():
     global login_screen
     login_screen = Toplevel(main_screen)
     login_screen.title("Login")
-    login_screen.geometry("310x230")
-    Label(login_screen, text="Enter the details  to login",font=("Times", "15", "bold italic")).pack()
+    login_screen.geometry("310x250")
+    login_screen.iconbitmap('pill.png')
+
+    Label(login_screen, text="Enter the details  to login",bd=5,bg='black',fg='white',font=("Bradley Hand ITC",20,"bold")).pack()
     Label(login_screen, text="").pack()
 
     global username_verify
@@ -130,13 +136,26 @@ def delete_user_not_found():
 def main_account_screen():
     global main_screen
     main_screen = Tk()
-    main_screen.geometry("310x230")
+    main_screen.geometry("500x300")
     main_screen.title("Login Or Registration")
-    Label(text="Login Or Registration",height ="2", bg="orange", width="310",font=("Times", "15", "bold italic")).pack()
-    Label(text="").pack()
-    Button(text="Login", height="1", width="28",font=("Times", "12", "bold"), command=login).pack()
-    Label(text="").pack()
-    Button(text="Register",height="1", width="28",font=("Times", "12", "bold"), command=register).pack()
+
+    main_screen.iconbitmap("pill.png")
+
+    Label(text="Login Or Registration",bd=4, bg="black",fg="white", width="310",font=("Bradley Hand ITC",20,"bold")).pack()
+    Label(text="").pack(side=TOP,fill= X)
+
+    frame1 = LabelFrame(main_screen,text="Choose to LOGIN OR REGISTER",bd=10,bg="light sky blue",relief=RIDGE)
+    frame1.place(x=0,y=50,width=500,height=250)
+
+    Button(frame1,text="Login", width="15",font=("Times", "12", "bold"),bd=5, command=login).grid(row=3, column=0)
+    Button(frame1,text="Register", width="15",font=("Times", "12", "bold"),bd=5, command=register).grid(row=3, column=1)
+
+    # images in left dataframe
+    imglogin = Image.open("Capture.PNG")
+    imglogin = imglogin.resize((476,180), Image.ANTIALIAS)
+    photoimg2 = ImageTk.PhotoImage(imglogin)
+    btn = Button(frame1, image=photoimg2, borderwidth=0)
+    btn.place(x=0, y=38)
 
     main_screen.mainloop()
 
